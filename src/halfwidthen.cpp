@@ -17,13 +17,15 @@ int utf8char_bytes(int16_t first_byte){
 }
 
 // [[Rcpp::export]]
-std::string halfwidthen_one(String r_str) {
-  std::string std_str(r_str);
-  int pos = 0;
+std::string halfwidthen_one(String str) {
+  std::string std_str(str);
   
-  while ( pos < std_str.size() ) {
+  unsigned int length = std_str.size();
+  unsigned int pos = 0;
+  
+  while ( pos < length ) {
     int16_t first_byte = ((int16_t) std_str[pos] & 0xFF);
-    int next = utf8char_bytes(first_byte);
+    unsigned int next = utf8char_bytes(first_byte);
     
     if ( next != 3 || first_byte != 0xEF ) {
       pos += next;
@@ -33,6 +35,7 @@ std::string halfwidthen_one(String r_str) {
     if( strncmp(&std_str[pos], "！", 3) >= 0 && strncmp(&std_str[pos], "～", 3) <= 0 ) {
       std_str.erase(pos, 2);
       std_str[pos] = std_str[pos] - 0x60;
+      length = std_str.size();
     }
   }
   
@@ -40,13 +43,11 @@ std::string halfwidthen_one(String r_str) {
 }
 
 // [[Rcpp::export]]
-CharacterVector halfwidthen(CharacterVector str) {
-  int length = str.size();
-  
-  for(auto x : str) {
+CharacterVector halfwidthen(CharacterVector strs) {  
+  for(auto x : strs) {
     if(CharacterVector::is_na(x)) break;
     x = halfwidthen_one(x);
   }
   
-  return str;
+  return strs;
 }

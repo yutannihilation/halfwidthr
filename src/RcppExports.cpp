@@ -29,14 +29,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // halfwidthen_one
-std::string halfwidthen_one(String r_str);
-RcppExport SEXP halfwidthr_halfwidthen_one(SEXP r_strSEXP) {
+std::string halfwidthen_one(String str);
+RcppExport SEXP halfwidthr_halfwidthen_one(SEXP strSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< String >::type r_str(r_strSEXP );
-        std::string __result = halfwidthen_one(r_str);
+        Rcpp::traits::input_parameter< String >::type str(strSEXP );
+        std::string __result = halfwidthen_one(str);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
@@ -44,14 +44,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // halfwidthen
-CharacterVector halfwidthen(CharacterVector str);
-RcppExport SEXP halfwidthr_halfwidthen(SEXP strSEXP) {
+CharacterVector halfwidthen(CharacterVector strs);
+RcppExport SEXP halfwidthr_halfwidthen(SEXP strsSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< CharacterVector >::type str(strSEXP );
-        CharacterVector __result = halfwidthen(str);
+        Rcpp::traits::input_parameter< CharacterVector >::type strs(strsSEXP );
+        CharacterVector __result = halfwidthen(strs);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
