@@ -1,11 +1,36 @@
 // [[Rcpp::plugins(cpp11)]]
 
+//' @useDynLib halfwidthr
+
 #include <Rcpp.h>
 
 using namespace Rcpp;
 
 unsigned int utf8char_bytes(int16_t first_byte);
 
+//' Convert Japanese alphanumerics to ASCII alphanumerics
+//' 
+//' @title halfwidthen
+//' @name halfwidthen
+//' 
+//' @description
+//' {{halfwidthen_one}} takes a single string.
+//' {{halfwidthen}} can take character vector whose length is more than one.
+//' 
+//' @examples
+//' x = c("１", "２２Ａ", "３３3")
+//' halfwidthen(x)
+//' halfwidthen_one(x[1])
+//' 
+//' \dontrun{
+//' # You will see error; halfwidthen_one can take one string as its argument.
+//' halfwidthen_one(x)
+//' }
+
+//' @rdname halfwidthen
+//' @param str a string to convert
+//' @return a converted string
+//' @export
 // [[Rcpp::export]]
 std::string halfwidthen_one(String str) {
   std::string std_str(str);
@@ -32,6 +57,10 @@ std::string halfwidthen_one(String str) {
   return std_str;
 }
 
+//' @rdname halfwidthen
+//' @param strs string(s) to convert
+//' 
+//' @export
 // [[Rcpp::export]]
 CharacterVector halfwidthen(CharacterVector strs) {  
   for(auto x : strs) {

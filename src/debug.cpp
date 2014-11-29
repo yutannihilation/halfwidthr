@@ -6,6 +6,7 @@
 
 using namespace Rcpp;
 
+//' @export
 // [[Rcpp::export]]
 void hexdump(std::string s) {
   std::cout << "\"" << s << "\" is ";
