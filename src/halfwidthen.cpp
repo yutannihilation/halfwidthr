@@ -7,7 +7,10 @@
 using namespace Rcpp;
 
 unsigned int utf8char_bytes(int16_t first_byte);
+bool is_between(const char* c, const char* start, const char* end);
 
+
+//' 
 //' Convert Japanese alphanumerics to ASCII alphanumerics
 //' 
 //' @title halfwidthen
@@ -27,6 +30,7 @@ unsigned int utf8char_bytes(int16_t first_byte);
 //' halfwidthen_one(x)
 //' }
 
+
 //' @rdname halfwidthen
 //' @param str a string to convert
 //' @return a converted string
@@ -39,18 +43,23 @@ std::string halfwidthen_one(String str) {
   unsigned int pos = 0;
   
   while ( pos < length ) {
-    int16_t first_byte = ((int16_t) std_str[pos] & 0xFF);
+    int16_t first_byte = (int16_t) std_str[pos] & 0xFF;
     unsigned int next = utf8char_bytes(first_byte);
     
-    if ( next != 3 || first_byte != 0xEF ) {
+    if( next == 3 ) {
+      if( is_between(&std_str[pos], "０", "９") || 
+          is_between(&std_str[pos], "Ａ", "Ｚ") ) {
+        std_str.erase(pos, 2);
+        std_str[pos] = std_str[pos] - 0x60;
+        length = std_str.size();
+      } else if( is_between(&std_str[pos], "ａ", "ｚ") ) {
+        std_str.erase(pos, 2);
+        std_str[pos] = std_str[pos] - 0x20;
+        length = std_str.size();
+      }
+      pos += 1;
+    } else {
       pos += next;
-      continue;
-    }
-        
-    if( strncmp(&std_str[pos], "！", 3) >= 0 && strncmp(&std_str[pos], "～", 3) <= 0 ) {
-      std_str.erase(pos, 2);
-      std_str[pos] = std_str[pos] - 0x60;
-      length = std_str.size();
     }
   }
   
@@ -71,14 +80,14 @@ CharacterVector halfwidthen(CharacterVector strs) {
   return strs;
 }
 
-// A byte length of UTF-8 char varies.
-// According to http://en.wikipedia.org/wiki/UTF-8, if first byte is...
+// Return the byte length of a given UTF-8 char.
+// Byte length of UTF-8 chars are determined by the first byte.
+// According to http://en.wikipedia.org/wiki/UTF-8:
 //
-// 1) 0b00000000(0x00) - 0b10111111(0xBF) -> 1 byte length
-// 2) 0b11000000(0xC0) - 0b11011111(0xDF) -> 2 bytes length
-// 3) 0b11100000(0xE0) - 0b11101111(0xEF) -> 3 bytes length
-// 4) larger than 0b11110000(0xF0)        -> 4 butes length
-
+// 1) between 0b00000000(0x00) and 0b10111111(0xBF) -> 1 byte length
+// 2) between 0b11000000(0xC0) and 0b11011111(0xDF) -> 2 bytes length
+// 3) between 0b11100000(0xE0) and 0b11101111(0xEF) -> 3 bytes length
+// 4) larger than 0b11110000(0xF0)                  -> 4 butes length
 unsigned int utf8char_bytes(int16_t first_byte){
   if (first_byte < 0xC0) {
     return 1;
@@ -88,5 +97,14 @@ unsigned int utf8char_bytes(int16_t first_byte){
     return 3;
   } else {
     return 4;
+  }
+}
+
+// check if a UTF-8 char is between two characters
+bool is_between(const char* c, const char* start, const char* end){
+  if( strncmp(c, start, 3) >= 0 && strncmp(c, end, 3) <= 0 ) {
+    return true;
+  } else {
+    return false;
   }
 }

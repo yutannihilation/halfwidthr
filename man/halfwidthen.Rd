@@ -17,8 +17,9 @@ halfwidthen(strs)
 a converted string
 }
 \description{
-{{halfwidthen_one}} takes a single string.
-{{halfwidthen}} can take character vector whose length is more than one.
+\code{halfwidthen_one} takes a single string.
+
+\code{halfwidthen} can take character vector whose length is more than one.
 }
 \details{
 Convert Japanese alphanumerics to ASCII alphanumerics

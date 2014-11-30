@@ -17,15 +17,32 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
-// display_fullwidth_chars
-void display_fullwidth_chars();
-RcppExport SEXP halfwidthr_display_fullwidth_chars() {
+// hexinterpret
+void hexinterpret(int charcode);
+RcppExport SEXP halfwidthr_hexinterpret(SEXP charcodeSEXP) {
 BEGIN_RCPP
     {
         Rcpp::RNGScope __rngScope;
-        display_fullwidth_chars();
+        Rcpp::traits::input_parameter< int >::type charcode(charcodeSEXP );
+        hexinterpret(charcode);
     }
     return R_NilValue;
+END_RCPP
+}
+// fullwidth_chars
+DataFrame fullwidth_chars(int start = 0xEFBC81, int end = 0xEFBD9E);
+RcppExport SEXP halfwidthr_fullwidth_chars(SEXP startSEXP, SEXP endSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< int >::type start(startSEXP );
+        Rcpp::traits::input_parameter< int >::type end(endSEXP );
+        DataFrame __result = fullwidth_chars(start, end);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
 END_RCPP
 }
 // halfwidthen_one
