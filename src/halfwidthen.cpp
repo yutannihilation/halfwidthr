@@ -1,5 +1,7 @@
 #include "halfwidthr.h"
 
+//' @useDynLib halfwidthr
+
 //' 
 //' Convert Japanese alphanumerics to ASCII alphanumerics
 //' 

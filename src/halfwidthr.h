@@ -5,8 +5,6 @@
 #include <iostream>
 #include <iomanip>
 
-//' @useDynLib halfwidthr
-
 using namespace Rcpp;
 
 unsigned int utf8char_bytes(int16_t first_byte);
