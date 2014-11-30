@@ -1,10 +1,4 @@
-#include <Rcpp.h>
-#include <iostream>
-#include <iomanip>
-
-using namespace Rcpp;
-
-unsigned int utf8char_bytes(int16_t first_byte);
+#include "halfwidthr.h"
 
 //' Functions to dig into UTF-8 byte codes.
 //' 

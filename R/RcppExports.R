@@ -46,9 +46,6 @@ fullwidth_chars <- function(start = 0xEFBC81L, end = 0xEFBD9EL) {
     .Call('halfwidthr_fullwidth_chars', PACKAGE = 'halfwidthr', start, end)
 }
 
-#' @useDynLib halfwidthr
-NULL
-
 #' 
 #' Convert Japanese alphanumerics to ASCII alphanumerics
 #' 
