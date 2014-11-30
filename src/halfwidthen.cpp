@@ -1,14 +1,11 @@
-// [[Rcpp::plugins(cpp11)]]
+#include <Rcpp.h>
 
 //' @useDynLib halfwidthr
-
-#include <Rcpp.h>
 
 using namespace Rcpp;
 
 unsigned int utf8char_bytes(int16_t first_byte);
 bool is_between(const char* c, const char* start, const char* end);
-
 
 //' 
 //' Convert Japanese alphanumerics to ASCII alphanumerics
@@ -30,7 +27,6 @@ bool is_between(const char* c, const char* start, const char* end);
 //' # You will see error; halfwidthen_one can take one string as its argument.
 //' halfwidthen_one(x)
 //' }
-
 
 //' @rdname halfwidthen
 //' @param str a string to convert

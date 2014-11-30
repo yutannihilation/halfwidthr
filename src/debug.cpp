@@ -1,4 +1,10 @@
-// [[Rcpp::plugins(cpp11)]]
+#include <Rcpp.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace Rcpp;
+
+unsigned int utf8char_bytes(int16_t first_byte);
 
 //' Functions to dig into UTF-8 byte codes.
 //' 
@@ -20,14 +26,6 @@
 //' 
 //' crsp_table <- fullwidth_chars()
 //' crsp_table[1:10,]
-
-#include <Rcpp.h>
-#include <iostream>
-#include <iomanip>
-
-using namespace Rcpp;
-
-unsigned int utf8char_bytes(int16_t first_byte);
 
 //' @rdname halfwidthr-debug
 //' @param s string to hexdump
