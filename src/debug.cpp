@@ -6,9 +6,11 @@
 //' @name halfwidthr-debug
 //' 
 //' @description
-//' {{hexdump}} prints given UTF-8 string in hex format.
-//' {{hexinterpret}} prints a UTF-8 chars which the given code point corresponds to.
-//' {{fullwidth_chars}} returns correspondence table between code points and UTF-8 chars.
+//' \code{hexdump} prints a given UTF-8 string in hex format.
+//' 
+//' \code{hexinterpret} prints a UTF-8 chars which a given code point corresponds to.
+//' 
+//' \code{fullwidth_chars} returns correspondence table between code points and UTF-8 chars.
 //' 
 //' @examples
 //' hexdump("あ")

@@ -17,8 +17,9 @@ bool is_between(const char* c, const char* start, const char* end);
 //' @name halfwidthen
 //' 
 //' @description
-//' {{halfwidthen_one}} takes a single string.
-//' {{halfwidthen}} can take character vector whose length is more than one.
+//' \code{halfwidthen_one} takes a single string.
+//' 
+//' \code{halfwidthen} can take character vector whose length is more than one.
 //' 
 //' @examples
 //' x = c("１", "２２Ａ", "３３3")
