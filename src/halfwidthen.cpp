@@ -28,7 +28,11 @@
 //' @return a converted string
 //' @export
 // [[Rcpp::export]]
-std::string halfwidthen_one(String str) {
+String halfwidthen_one(String str) {
+  
+  // If NA, no need to convert; just return NA
+  if(str == NA_STRING) return str;
+  
   std::string std_str(str);
   
   unsigned int length = std_str.size();
@@ -55,7 +59,7 @@ std::string halfwidthen_one(String str) {
     }
   }
   
-  return std_str;
+  return String(std_str);
 }
 
 //' @rdname halfwidthen
@@ -63,11 +67,11 @@ std::string halfwidthen_one(String str) {
 //' 
 //' @export
 // [[Rcpp::export]]
-CharacterVector halfwidthen(CharacterVector strs) {  
-  for(auto x : strs) {
-    if(CharacterVector::is_na(x)) break;
+CharacterVector halfwidthen(CharacterVector strs) {
+  CharacterVector result = clone(strs);
+  for(auto x : result) {
     x = halfwidthen_one(x);
   }
   
-  return strs;
+  return result;
 }

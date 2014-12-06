@@ -46,14 +46,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // halfwidthen_one
-std::string halfwidthen_one(String str);
+String halfwidthen_one(String str);
 RcppExport SEXP halfwidthr_halfwidthen_one(SEXP strSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< String >::type str(strSEXP );
-        std::string __result = halfwidthen_one(str);
+        String __result = halfwidthen_one(str);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
