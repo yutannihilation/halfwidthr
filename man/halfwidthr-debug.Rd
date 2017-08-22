@@ -16,7 +16,7 @@ fullwidth_chars(start = 15711361L, end = 15711646L)
 \arguments{
 \item{s}{string to hexdump}
 
-\item{charcode}{a charcode between 0x00000000 to 0xFFFFFFFF}
+\item{charcode}{a charcode between \code{0x00000000} to \code{0xFFFFFFFF}}
 
 \item{start}{charcode of lower limit of the correspondence table(default: 0xEFBC81, ！)}
 
@@ -33,8 +33,7 @@ fullwidth_chars(start = 15711361L, end = 15711646L)
 Functions to dig into UTF-8 byte codes.
 }
 \examples{
-hexdump("あ")
-hexdump("月が綺麗ですね")
+hexdump("\\u6708\\u304c\\u7dba\\u9e97\\u3067\\u3059\\u306d")
 
 hexinterpret(0xE38384)
 

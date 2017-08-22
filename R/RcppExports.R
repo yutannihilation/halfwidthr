@@ -14,8 +14,7 @@
 #' \code{fullwidth_chars} returns correspondence table between code points and UTF-8 chars.
 #' 
 #' @examples
-#' hexdump("あ")
-#' hexdump("月が綺麗ですね")
+#' hexdump("\u6708\u304c\u7dba\u9e97\u3067\u3059\u306d")
 #' 
 #' hexinterpret(0xE38384)
 #' 
@@ -31,7 +30,7 @@ hexdump <- function(s) {
 }
 
 #' @rdname halfwidthr-debug
-#' @param charcode a charcode between 0x00000000 to 0xFFFFFFFF
+#' @param charcode a charcode between \code{0x00000000} to \code{0xFFFFFFFF}
 #' @export
 hexinterpret <- function(charcode) {
     invisible(.Call('_halfwidthr_hexinterpret', PACKAGE = 'halfwidthr', charcode))

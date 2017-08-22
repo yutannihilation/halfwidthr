@@ -1,7 +1,5 @@
 #include "halfwidthr.h"
 
-// [[Rcpp::plugins("cpp11")]]
-
 String halfwidthen_one(const String & x);
 
 //' 
