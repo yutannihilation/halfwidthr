@@ -1,6 +1,8 @@
 halfwidthr
 ==========
 
+[![Travis-CI Build Status](https://travis-ci.org/yutannihilation/halfwidthr.svg?branch=master)](https://travis-ci.org/yutannihilation/halfwidthr)
+
 Convert Japanese alphanumerics（a.k.a. 全角英数） to ASCII alphanumerics（a.k.a. 半角英数）
 
 # Usage
@@ -21,16 +23,4 @@ Convert Japanese alphanumerics（a.k.a. 全角英数） to ASCII alphanumerics�
 ```R
 library(devtools)
 install_github("yutannihilation/halfwidthr")
-```
-
-If you got an error, try these (I'm not sure if this will work...):
-
-```R
-Sys.setenv("PKG_CXXFLAGS"="-std=c++11")
-```
-
-or
-
-```R
-Sys.setenv("PKG_CXXFLAGS"="-std=c++0x")
 ```
