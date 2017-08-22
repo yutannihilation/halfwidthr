@@ -26,14 +26,14 @@ NULL
 #' @param s string to hexdump
 #' @export
 hexdump <- function(s) {
-    invisible(.Call('_halfwidthr_hexdump', PACKAGE = 'halfwidthr', s))
+    invisible(.Call(`_halfwidthr_hexdump`, s))
 }
 
 #' @rdname halfwidthr-debug
 #' @param charcode a charcode between \code{0x00000000} to \code{0xFFFFFFFF}
 #' @export
 hexinterpret <- function(charcode) {
-    invisible(.Call('_halfwidthr_hexinterpret', PACKAGE = 'halfwidthr', charcode))
+    invisible(.Call(`_halfwidthr_hexinterpret`, charcode))
 }
 
 #' @rdname halfwidthr-debug
@@ -42,7 +42,7 @@ hexinterpret <- function(charcode) {
 #' 
 #' @export
 fullwidth_chars <- function(start = 0xEFBC81L, end = 0xEFBD9EL) {
-    .Call('_halfwidthr_fullwidth_chars', PACKAGE = 'halfwidthr', start, end)
+    .Call(`_halfwidthr_fullwidth_chars`, start, end)
 }
 
 #' 
@@ -59,6 +59,6 @@ fullwidth_chars <- function(start = 0xEFBC81L, end = 0xEFBD9EL) {
 #'
 #' @export
 halfwidthen <- function(x) {
-    .Call('_halfwidthr_halfwidthen', PACKAGE = 'halfwidthr', x)
+    .Call(`_halfwidthr_halfwidthen`, x)
 }
 
