@@ -48,16 +48,3 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-
-static const R_CallMethodDef CallEntries[] = {
-    {"_halfwidthr_hexdump", (DL_FUNC) &_halfwidthr_hexdump, 1},
-    {"_halfwidthr_hexinterpret", (DL_FUNC) &_halfwidthr_hexinterpret, 1},
-    {"_halfwidthr_fullwidth_chars", (DL_FUNC) &_halfwidthr_fullwidth_chars, 2},
-    {"_halfwidthr_halfwidthen", (DL_FUNC) &_halfwidthr_halfwidthen, 1},
-    {NULL, NULL, 0}
-};
-
-RcppExport void R_init_halfwidthr(DllInfo *dll) {
-    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
-    R_useDynamicSymbols(dll, FALSE);
-}

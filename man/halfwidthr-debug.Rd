@@ -18,9 +18,9 @@ fullwidth_chars(start = 15711361L, end = 15711646L)
 
 \item{charcode}{a charcode between \code{0x00000000} to \code{0xFFFFFFFF}}
 
-\item{start}{charcode of lower limit of the correspondence table(default: 0xEFBC81, ！)}
+\item{start}{charcode of lower limit of the correspondence table(default: 0xEFBC81)}
 
-\item{end}{charcode of upper limit of the correspondence table(default: 0xEFBC81, ～)}
+\item{end}{charcode of upper limit of the correspondence table(default: 0xEFBC81)}
 }
 \description{
 \code{hexdump} prints a given UTF-8 string in hex format.
@@ -30,10 +30,10 @@ fullwidth_chars(start = 15711361L, end = 15711646L)
 \code{fullwidth_chars} returns correspondence table between code points and UTF-8 chars.
 }
 \details{
-Functions to dig into UTF-8 byte codes.
+Dig Into UTF-8 Byte Codes
 }
 \examples{
-hexdump("\\u6708\\u304c\\u7dba\\u9e97\\u3067\\u3059\\u306d")
+hexdump("\\\\u6708\\\\u304c\\\\u7dba\\\\u9e97\\\\u3067\\\\u3059\\\\u306d")
 
 hexinterpret(0xE38384)
 
