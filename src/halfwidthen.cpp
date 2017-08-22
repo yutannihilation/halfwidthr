@@ -1,6 +1,8 @@
 #include "halfwidthr.h"
 
-//' @useDynLib halfwidthr
+// [[Rcpp::plugins("cpp11")]]
+
+String halfwidthen_one(const String & x);
 
 //' 
 //' Convert Japanese alphanumerics to ASCII alphanumerics
@@ -8,30 +10,28 @@
 //' @title halfwidthen
 //' @name halfwidthen
 //' 
-//' @description
-//' \code{halfwidthen_one} takes a single string.
-//' 
-//' \code{halfwidthen} can take character vector whose length is more than one.
+//' @param x A string to convert
 //' 
 //' @examples
-//' x = c("１", "２２Ａ", "３３3")
+//' x = c("\uff10", "\uff11")
 //' halfwidthen(x)
-//' halfwidthen_one(x[1])
-//' 
-//' \dontrun{
-//' # You will see error; halfwidthen_one can take one string as its argument.
-//' halfwidthen_one(x)
-//' }
-
-//' @rdname halfwidthen
-//' @param str a string to convert
-//' @return a converted string
+//'
 //' @export
 // [[Rcpp::export]]
-String halfwidthen_one(String str) {
+CharacterVector halfwidthen(CharacterVector x) {
+  CharacterVector str(x.size());
+  std::transform(x.begin(), x.end(), str.begin(), halfwidthen_one);
+  return str;
+}
+
+String halfwidthen_one(const String & x) {
+  String str(x);
   
   // If NA, no need to convert; just return NA
   if(str == NA_STRING) return str;
+  
+  // convert to UTF-8
+  str.set_encoding(CE_UTF8);
   
   std::string std_str(str);
   
@@ -59,19 +59,5 @@ String halfwidthen_one(String str) {
     }
   }
   
-  return String(std_str);
-}
-
-//' @rdname halfwidthen
-//' @param strs string(s) to convert
-//' 
-//' @export
-// [[Rcpp::export]]
-CharacterVector halfwidthen(CharacterVector strs) {
-  CharacterVector result = clone(strs);
-  for(auto x : result) {
-    x = halfwidthen_one(x);
-  }
-  
-  return result;
+  return String(std_str, CE_UTF8);
 }
