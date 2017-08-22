@@ -2,6 +2,7 @@ halfwidthr
 ==========
 
 [![Travis-CI Build Status](https://travis-ci.org/yutannihilation/halfwidthr.svg?branch=master)](https://travis-ci.org/yutannihilation/halfwidthr)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/yutannihilation/halfwidthr?branch=master&svg=true)](https://ci.appveyor.com/project/yutannihilation/halfwidthr)
 
 Convert Japanese alphanumerics（a.k.a. 全角英数） to ASCII alphanumerics（a.k.a. 半角英数）
 
